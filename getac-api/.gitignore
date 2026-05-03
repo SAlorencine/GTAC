@@ -1,8 +1,20 @@
 HELP.md
 target/
-.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### Arquivos de Log e Segurança (Cloud) ###
+*.log
+.env
+*.env
+application-dev.properties
+application-local.properties
+
+### OS Junk ###
+Thumbs.db
+desktop.ini
+.DS_Store
 
 ### STS ###
 .apt_generated
@@ -20,7 +32,8 @@ target/
 *.ipr
 
 ### NetBeans ###
-/nbproject/private/
+nbproject/
+.nbproject/
 /nbbuild/
 /dist/
 /nbdist/
