@@ -1,6 +1,8 @@
-package gtac;
-
-import java.io.File;
+package br.com.consulton.getac_api;
+import br.com.consulton.getac_api.ResultadoAnalise;
+import br.com.consulton.getac_api.Emissao;
+import org.springframework.stereotype.Service;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -9,12 +11,13 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts; 
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
-public class geradorPDF {
+@Service
+public class GeradorPDF {
 
-    public void gerarRelatorio(List<ResultadoAnalise> resultados, String caminhoSaida, String mes1, String mes2) {
-        try (PDDocument document = new PDDocument()) {
+    public byte[] gerarRelatorio(List<ResultadoAnalise> resultados, String mes1, String mes2) {
+        try (PDDocument document = new PDDocument();ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             
             if (resultados.isEmpty()) {
                 PDPage page = new PDPage();
@@ -37,8 +40,8 @@ public class geradorPDF {
                     contentStream.showText("Todos os CNPJs analisados apresentam valores coincidentes.");
                     contentStream.endText();
                 }
-                document.save(new File(caminhoSaida));
-                return; 
+                document.save(out);
+                return out.toByteArray(); 
             }
 
             PDPage page = new PDPage();
@@ -157,10 +160,12 @@ public class geradorPDF {
             }
 
             contentStream.close();
-            document.save(new File(caminhoSaida));
+            document.save(out);
+            return out.toByteArray();
             
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 

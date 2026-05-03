@@ -1,0 +1,12 @@
+/* Animação do botão carregando */
+.loader {
+    border-top-color: #34d399;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+}
+
+@keyframes spinner {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+

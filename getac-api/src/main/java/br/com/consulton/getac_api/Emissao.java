@@ -1,7 +1,10 @@
-package gtac;
+package br.com.consulton.getac_api;
 
+
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
-
 public class Emissao {
     private String cnpj;
     private String nomeTomador;

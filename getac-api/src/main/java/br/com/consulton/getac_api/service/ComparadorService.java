@@ -1,7 +1,7 @@
-package service;
-
-import gtac.Emissao;
-import gtac.ResultadoAnalise;
+package br.com.consulton.getac_api.service;
+import br.com.consulton.getac_api.Emissao;
+import br.com.consulton.getac_api.ResultadoAnalise;
+import org.springframework.stereotype.Service;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Service
 public class ComparadorService {
     
     public List<ResultadoAnalise> compararArquivos(List<Emissao> emissoes1, List<Emissao> emissoes2, String nomeMes1, String nomeMes2) {
